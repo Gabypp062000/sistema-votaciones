@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votación</title>
+</head>
+<body>
+    <h1>Sistema de Votación</h1>
+    <form method="post">
+        <label for="cargo">Seleccione el cargo:</label>
+        <select name="cargo" id="cargo" onchange="this.form.submit()">
+            {% for cargo in cargos %}
+                <option value="{{ cargo }}" {% if seleccion_cargo == cargo %}selected{% endif %}>{{ cargo }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <form method="post">
+        <label for="candidato">Seleccione su candidato:</label>
+        <select name="candidato" id="candidato">
+            {% for candidato in candidatos %}
+                <option value="{{ candidato }}">{{ candidato }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Votar</button>
+    </form>
+</body>
+</html>
